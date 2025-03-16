@@ -3,7 +3,6 @@ from PyQt6.QtWidgets import *
 from smart_file import *
 
 app = QApplication([])
-
 notes = read_in_file()
 
 window = QWidget()
@@ -89,8 +88,12 @@ def delete_func():
     write_in_file(notes)
 
 def add_tag():
-    text = text_edit.toPlainText()
-
+    text = tag_input.text()
+    note_key = note_list.currentItem().text()
+    notes[note_key]["теги"].append(text)
+    write_in_file(notes)
+    tag_input.clear()
+    tag_input.addItems(notes[note_key]["теги"])
 
 add_tag_btn.clicked.connect(add_tag)
 delete_note_btn.clicked.connect(delete_func)
