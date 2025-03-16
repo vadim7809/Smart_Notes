@@ -97,19 +97,26 @@ def add_tag():
 
 
 def remove_tag():
-    note_key = note_list.currentItem().text()  
+    note_key = note_list.currentItem().text()
     selected_tag = tag_list.currentItem()
 
     if selected_tag:
         tag_text = selected_tag.text()
         notes[note_key]["теги"].remove(tag_text)
         write_in_file(notes)
-
-
         tag_list.clear()
         tag_list.addItems(notes[note_key]["теги"])
 
+def search_tag():
+    tag = tag_list.text()
 
+        for note in notes:
+            if tag in notes[note]["теги"]:
+                note_list.addItem(note)
+
+
+
+search_btn.clicked.connect(search_tag)
 remove_tag_btn.clicked.connect(remove_tag)
 add_tag_btn.clicked.connect(add_tag)
 delete_note_btn.clicked.connect(delete_func)
