@@ -5,6 +5,20 @@ from smart_file import *
 app = QApplication([])
 notes = read_in_file()
 
+app.setStyleSheet("""
+    QPushButton
+    {
+        background-color: #87CEEB;
+        border-style:  groove;
+        border-width: 3px;
+        border-radius: 7px;
+    }
+    QLabel
+    {
+        background-color: #FFFAF0;
+    }
+    """)
+
 window = QWidget()
 window.resize(600, 400)
 
@@ -127,3 +141,5 @@ note_list.itemClicked.connect(show_note)
 window.setLayout(main_line)
 window.show()
 app.exec()
+
+
