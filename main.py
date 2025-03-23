@@ -108,11 +108,11 @@ def remove_tag():
         tag_list.addItems(notes[note_key]["теги"])
 
 def search_tag():
-    tag = tag_list.text()
+    tag = tag_input.text()
 
-        for note in notes:
-            if tag in notes[note]["теги"]:
-                note_list.addItem(note)
+    for note in notes:
+        if tag in notes[note]["теги"]:
+            note_list.addItem(note)
 
 
 
